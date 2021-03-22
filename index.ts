@@ -1,10 +1,14 @@
+const webhookurlRegex = /https:\/\/discord\.com\/api\/webhooks\//g;
+
 export default class discordwebhook {
-  url: any;
+  url: string;
   constructor(webhook_url?: string) {
-    this.url = webhook_url;
+    this.url = webhook_url || "";
   }
   send(message: string, params?: object) {
-    if(typeof this.url !== 'string') throw new Error('Please provide a webhook URL, this.url');
+    if (this.url.search(webhookurlRegex) !== 0) {
+      throw new Error("Please provide a webhook URL, this.url");
+    }
     let data: any = {
       "content": message,
     };
