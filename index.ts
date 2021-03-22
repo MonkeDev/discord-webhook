@@ -1,9 +1,16 @@
-const webhookurlRegex = /https:\/\/(www\.|)discord\.com\/api\/webhooks\//g
+const webhookUrlRegex = /https:\/\/(www\.|)discord\.com\/api\/webhooks\//g;
+const getWebHookInfo = (url: string) => {
+  const [webhookId, webhookToken] = url.split("webhooks/")[1].split("/");
+  return {
+    id: webhookId,
+    token: webhookToken,
+  };
+};
 export default class discordwebhook {
   url: string;
-  constructor(webhookUrl: string) {
+  constructor(webhookUrl?: string) {
     this.url = webhookUrl ?? "https://discord.com/api/webhooks/";
-    if (this.url.search(webhookurlRegex) !== 0) {
+    if (this.url.search(webhookUrlRegex) !== 0) {
       throw new Error("Please provide a webhook URL, this.url");
     }
   }
@@ -25,5 +32,30 @@ export default class discordwebhook {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     });
+  }
+
+  edit(
+    messageId: string,
+    content: string,
+    embeds?: Array<object>,
+    allowed_mentions?: object,
+  ) {
+    let data: any = {
+      "content": content,
+    };
+    if (embeds) data["embeds"] = embeds;
+    else if (allowed_mentions) data["allowed_mentions"] = allowed_mentions;
+    return fetch(
+      `https://discord.com/api/v8/webhooks/${
+        encodeURIComponent(getWebHookInfo(this.url).id)
+      }/${encodeURIComponent(getWebHookInfo(this.url).token)}/messages/${
+        encodeURIComponent(messageId)
+      }`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      },
+    );
   }
 }
