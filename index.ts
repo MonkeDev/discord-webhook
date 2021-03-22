@@ -4,11 +4,12 @@ export default class discordwebhook {
   url: string;
   constructor(webhook_url?: string) {
     this.url = webhook_url || "";
+    if (this.url.search(webhookurlRegex) !== 0) {
+      throw new Error("Please provide a webhook URL");
+    }
   }
   send(message: string, params?: object) {
-    if (this.url.search(webhookurlRegex) !== 0) {
-      throw new Error("Please provide a webhook URL, this.url");
-    }
+    
     let data: any = {
       "content": message,
     };
