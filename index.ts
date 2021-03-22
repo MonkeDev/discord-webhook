@@ -8,14 +8,14 @@ const getWebHookInfo = (url: string) => {
 };
 export default class discordwebhook {
   url: string;
-  constructor(webhookUrl?: string) {
+  constructor(webhookUrl: string) {
     this.url = webhookUrl ?? "https://discord.com/api/webhooks/";
     if (this.url.search(webhookUrlRegex) !== 0) {
       throw new Error("Please provide a webhook URL, this.url");
     }
   }
 
-  createMessage(message: string|null, params?: object) {
+  createMessage(message: string, params?: object) {
     let data: any = {
       "content": message,
     };
@@ -37,7 +37,7 @@ export default class discordwebhook {
   editMessage(
     messageId: string,
     content: string,
-    embeds?: Array<object>,
+    embeds?: object[],
     allowed_mentions?: object,
   ) {
     let data: any = {
