@@ -44,4 +44,4 @@ webhook.deleteMessage(messageId: string)
 
 ## Contributing
 - If you want, fill in the gaps that are missing. Check out the [Discord Webhook Documentation]() to see what methods to add. Make a pull request once you are done :)
-- Please message us in our [Discord Server]() | Authors: `Swaggger/BurnedBed` & `Mafia`
+- Please message us in our [Discord Server](https://monkedev.com/r/discord) | Authors: `Swaggger/BurnedBed` & `Mafia`
