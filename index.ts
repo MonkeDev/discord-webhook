@@ -15,7 +15,7 @@ export default class discordwebhook {
     }
   }
 
-  execute(message: string, params?: object) {
+  createMessage(message: string|null, params?: object) {
     let data: any = {
       "content": message,
     };
@@ -31,10 +31,10 @@ export default class discordwebhook {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
-    });
+    }).then(res => res.text());
   }
 
-  edit(
+  editMessage(
     messageId: string,
     content: string,
     embeds?: Array<object>,
@@ -56,6 +56,20 @@ export default class discordwebhook {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       },
-    );
+    ).then(res => res.json());
+  }
+
+  deleteMessage(messageId: string) {
+    return fetch(
+      `https://discord.com/api/v8/webhooks/${
+        encodeURIComponent(getWebHookInfo(this.url).id)
+      }/${encodeURIComponent(getWebHookInfo(this.url).token)}/messages/${
+        encodeURIComponent(messageId)
+      }`,
+      {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      },
+    ).then(res => res.text());
   }
 }
