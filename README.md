@@ -1,4 +1,5 @@
 # discord-webhook
+## Some problems rn with Deno script hosting :trollface:
 - Create/Edit/Delete Discord webhook messages with their [API](https://discord.com/developers/docs/intro).
 
 ## Example using [Discordeno](https://deno.land/x/discordeno@10.5.0)
