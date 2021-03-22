@@ -1,9 +1,10 @@
 export default class discordwebhook {
-  url: string;
-  constructor(webhook_url: string) {
+  url: any;
+  constructor(webhook_url?: string) {
     this.url = webhook_url;
   }
   send(message: string, params?: object) {
+    if(typeof this.url !== 'string') throw new Error('Please provide a webhook URL, this.url');
     let data: any = {
       "content": message,
     };
