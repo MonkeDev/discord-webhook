@@ -1,4 +1,4 @@
-const webhookUrlRegex = /https:\/\/(www\.|)discord\.com\/api\/webhooks\//g;
+const webhookUrlRegex = /https:\/\/(www\.|)discord\.com\/api\/webhooks\/[0-9]{16,19}\/[^ ]{1,}/g;
 const getWebHookInfo = (url: string) => {
   const [webhookId, webhookToken] = url.split("webhooks/")[1].split("/");
   return {
@@ -10,7 +10,7 @@ export default class discordwebhook {
   url: string;
   constructor(webhookUrl: string) {
     this.url = webhookUrl ?? "https://discord.com/api/webhooks/";
-    if (this.url.search(webhookUrlRegex) !== 0) {
+    if (!webhookUrlRegex.test(this.url)) {
       throw new Error("Please provide a webhook URL, this.url");
     }
   }
