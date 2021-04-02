@@ -1,12 +1,16 @@
 # discord-webhook
+
 ## Some problems rn with Deno script hosting (https://deno.land) :trollface:
-- Create/Edit/Delete Discord webhook messages with their [API](https://discord.com/developers/docs/intro).
+
+- Create/Edit/Delete Discord webhook messages with their
+  [API](https://discord.com/developers/docs/intro).
 
 ## Example using [Discordeno](https://deno.land/x/discordeno@10.5.0)
+
 ```ts
-import discordwebhook from 'https://deno.land/x/discordwebhook@0.0.1/mod.ts';
+import discordwebhook from "https://deno.land/x/discordwebhook@0.0.1/mod.ts";
 import { startBot } from "https://deno.land/x/discordeno/mod.ts";
-const webhook = new discordwebhook('YOUR-WEBHOOK-URL');
+const webhook = new discordwebhook("YOUR-WEBHOOK-URL");
 
 startBot({
   token: "BOT-TOKEN",
@@ -17,8 +21,8 @@ startBot({
     },
     messageCreate(message) {
       if (message.content == "hi") {
-        webhook.createMessage('Hello!')
-            .then(console.log);
+        webhook.createMessage("Hello!")
+          .then(console.log);
       }
     },
   },
@@ -26,16 +30,17 @@ startBot({
 ```
 
 ## Documentation
+
 ```ts
 import discordwebhook from 'https://deno.land/x/discordwebhook@0.0.1/mod.ts';
 const webhook = new discordwebhook(webhookUrl?: string);
 
 // Creates a webhook message
-webhook.createMessage(message: string, params?: object | undefined)
+webhook.createMessage(message?: string, params?: executeParams)
     .then(console.log);
 
 // Edits a webhook message
-webhook.editMessage(messageId: string, content: string, embeds?: object[] | undefined, allowed_mentions?: object | undefined)
+webhook.editMessage(messageId: string, content: string, embeds?: embedStructure[] | undefined, allowed_mentions?: object | undefined)
     .then(console.log);
 
 // Deletes a webhook message
@@ -44,5 +49,9 @@ webhook.deleteMessage(messageId: string)
 ```
 
 ## Contributing
-- If you want, fill in the gaps that are missing. Check out the [Discord Webhook Documentation]() to see what methods to add. Make a pull request once you are done :)
-- Please message us in our [Discord Server](https://monkedev.com/r/discord) | Authors: `Swaggger/BurnedBed` & `Mafia`
+
+- If you want, fill in the gaps that are missing. Check out the
+  [Discord Webhook Documentation](https://discord.com/developers/docs/resources/webhook) to see what methods to add. Make a pull
+  request once you are done :)
+- Please message us in our [Discord Server](https://monkedev.com/r/discord) |
+  Authors: `Swaggger/BurnedBed` & `Mafia`
