@@ -32,7 +32,7 @@ startBot({
 ## Documentation
 
 ```ts
-import discordwebhook from 'https://deno.land/x/discordwebhook@0.0.1/mod.ts';
+import discordwebhook from 'https://deno.land/x/discordwebhook/mod.ts';
 const webhook = new discordwebhook(webhookUrl?: string);
 
 // Creates a webhook message
