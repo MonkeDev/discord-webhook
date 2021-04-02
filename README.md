@@ -7,7 +7,7 @@
 ## Example using [Discordeno](https://deno.land/x/discordeno@10.5.0)
 
 ```ts
-import discordwebhook from "https://deno.land/x/discordwebhook@0.0.1/mod.ts";
+import discordwebhook from "https://deno.land/x/discordwebhook/mod.ts";
 import { startBot } from "https://deno.land/x/discordeno/mod.ts";
 const webhook = new discordwebhook("YOUR-WEBHOOK-URL");
 
