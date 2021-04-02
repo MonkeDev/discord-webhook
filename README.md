@@ -1,9 +1,8 @@
 # discord-webhook
 
-## Some problems rn with Deno script hosting (https://deno.land) :trollface:
-
 - Create/Edit/Delete Discord webhook messages with their
   [API](https://discord.com/developers/docs/intro).
+- Read our **[Documentation](https://github.com/MonkeDev/discord-webhook/tree/main/docs)** if you are confused on how to use this package and/or get help in our [Discord Server](https://monkedev.com/r/discord)
 
 ## Example using [Discordeno](https://deno.land/x/discordeno@10.5.0)
 
@@ -29,29 +28,6 @@ startBot({
 });
 ```
 
-## Documentation
-
-```ts
-import discordwebhook from 'https://deno.land/x/discordwebhook/mod.ts';
-const webhook = new discordwebhook(webhookUrl?: string);
-
-// Creates a webhook message
-webhook.createMessage(message?: string, params?: executeParams)
-    .then(console.log);
-
-// Edits a webhook message
-webhook.editMessage(messageId: string, content: string, embeds?: embedStructure[] | undefined, allowed_mentions?: object | undefined)
-    .then(console.log);
-
-// Deletes a webhook message
-webhook.deleteMessage(messageId: string)
-    .then(console.log);
-```
-
 ## Contributing
 
-- If you want, fill in the gaps that are missing. Check out the
-  [Discord Webhook Documentation](https://discord.com/developers/docs/resources/webhook) to see what methods to add. Make a pull
-  request once you are done :)
-- Please message us in our [Discord Server](https://monkedev.com/r/discord) |
-  Authors: `Swaggger/BurnedBed` & `Mafia`
+You may check out the [Discord Webhook Documentation](https://discord.com/developers/docs/resources/webhook) to see what new methods/functionality should be added. Please contact the founders on the [Discord Server](https://monkedev.com/r/discord) for more information. Once you got the idea, fork the repository. Upon completion, format your code with `deno fmt` and make a pull request. 
